@@ -4,11 +4,64 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Adventure Tracker</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
+  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+  <header>
+    <nav>
+      <div class="user-greeting">
+        <img>
+        <p>Traveler Name</p>
+      </div>
+      <button>Logout</button>
+    </nav>
+    <container class="next-Adventure">
+      <form>
+        <h1>Find Your Next Adventure</h1>
+        <div class="input-container">
+          <select class="dropdown" placeholder="Destinations" id="destinations" aria-label="destination-menu">
+            <option value="Rome">Destination</option> 
+            <option value="Rome">Rome</option>
+            <!-- all the the destinations load here  -->
+          </select>
+          <input class="guests" type="number" id="guests" name="guests" placeholder="guests" min="0" max="20">
+          <input class="date-start" type="date" name="start-date" aria-label="start-date">
+          <input class="date-end" type="date" name="start-date" aria-label="end-date">
+          <button class="estimate">Get Estimate</button>
+        </div>
+      </form>
+    </container>
+  </header>
+  <main>
+    <container class="travel-grid">
+      <section>
+        <h2>Future Trips</h2>
+        <container class="trip-display">
+
+        </container>
+      </section>
+      <section>
+        <h2>Pending Trips</h2>
+        <container class="trip-display">
+
+        </container>
+      </section>
+      <section>
+        <h2>Past Adventures</h2>
+        <container class="trip-display">
+
+        </container>
+      </section>
+      <section>
+        <h2>Current Trip</h2>
+        <container class="trip-display">
+
+        </container>
+      </section>
+    </container>
+  </main>
+  <footer></footer>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
 
