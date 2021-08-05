@@ -36,6 +36,9 @@ main {
   border: solid 2px goldenrod;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  height: 30vh;
 
   background: url(https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1004&q=80)
     center;
@@ -79,11 +82,16 @@ form {
   border: solid 2px green;
   display: grid;
   grid-template-columns: 1fr;
-  width: 94vw;
+  gap: 2em;
+  width: 90vw;
 }
 
 .trip-display {
   border: solid 2px orange;
+  height: 70vh;
+  // background: url(https://images.unsplash.com/photo-1471018238625-87ca40f13b31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80);
+  // background-size: cover;
+  // background-repeat: no-repeat;
 }
 
 footer {
@@ -91,13 +99,17 @@ footer {
   height: 4em;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 600px) {
   .travel-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .trip-display {
+    height: 45vh;
+  }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
   .input-container {
     grid-template-columns: repeat(5, 1fr);
   }
@@ -124,5 +136,10 @@ footer {
 
   .travel-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 95vw;
+  }
+
+  .trip-display {
+    height: 60vh;
   }
 }
