@@ -1,6 +1,8 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 // $primary-background:
 
+// @import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -94,6 +96,11 @@ form {
   height: 70vh;
 }
 
+// .glide {
+//   border: solid 2px goldenrod;
+//   width: 90vw;
+// }
+
 .trip-image {
   height: 50%;
   width: 100%;
@@ -116,6 +123,10 @@ footer {
   .trip-display {
     height: 45vh;
   }
+
+  // .glide {
+  //   width: 31vw;
+  // }
 }
 
 @media screen and (min-width: 1000px) {
@@ -151,4 +162,8 @@ footer {
   .trip-display {
     height: 60vh;
   }
+
+  // .glide {
+  //   width: 22vw;
+  // }
 }
