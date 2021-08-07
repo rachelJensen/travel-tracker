@@ -1,10 +1,43 @@
+export const travelers = [
+  {
+    id: 2,
+    name: 'Mini Floof',
+    travelerType: 'thrill-seeker',
+  },
+  {
+    id: 1,
+    name: 'Lady Floof',
+    travelerType: 'relaxer',
+  },
+  {
+    id: 3,
+    name: 'FLooficorn',
+    travelerType: 'foodie',
+  },
+  {
+    id: 4,
+    name: 'Lion Floof',
+    travelerType: 'photographer',
+  },
+  {
+    id: 5,
+    name: 'Dino Floof',
+    travelerType: 'thrill-seeker',
+  },
+  {
+    id: 6,
+    name: 'Dragon Floof',
+    travelerType: 'history buff',
+  },
+];
+
 export const trips = [
   {
     id: 1,
     userID: 1,
     destinationID: 1,
     travelers: 1,
-    date: '20219/09/16',
+    date: '2019/09/16',
     duration: 8,
     status: 'approved',
     suggestedActivities: [],
@@ -34,7 +67,7 @@ export const trips = [
     userID: 2,
     destinationID: 5,
     travelers: 2,
-    date: '2021/08/05',
+    date: '2021/08/25',
     duration: 10,
     status: 'approved',
     suggestedActivities: [],
