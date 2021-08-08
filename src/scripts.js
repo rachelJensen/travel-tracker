@@ -5,17 +5,20 @@
 
 import './css/base.scss';
 import dayjs from 'dayjs';
-// import Glide from '@glidejs/glide';
+import Glide from '@glidejs/glide';
 
-// new Glide('.glide').mount();
+new Glide('.glide', {
+  type: 'carousel',
+  startAt: 0,
+  perView: 2,
+  focusAt: 'center',
+}).mount();
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 import { requestAllData } from './apiCalls';
 import Destinations from './Destinations';
 import Traveler from './Traveler';
-
-console.log('This is the JavaScript entry file - your code begins here.');
 
 //global variables
 export const userID = 2;
