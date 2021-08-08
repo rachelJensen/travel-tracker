@@ -14,10 +14,13 @@ class Trip {
 
   calculateCost(destinations) {
     let place = destinations.getDetails(this.destinationID);
-    let lodgingCost = place.estimatedLodgingCostPerDay * this.duration;
-    let flightCost = place.estimatedFlightCostPerPerson * this.travelers;
 
-    return lodgingCost + flightCost;
+    let total =
+      this.travelers *
+      (place.estimatedFlightCostPerPerson +
+        this.duration * place.estimatedLodgingCostPerDay);
+
+    return total;
   }
 
   reportTripInfo(destinations) {
