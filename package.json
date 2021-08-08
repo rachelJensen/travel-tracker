@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
+    "dayjs": "^1.10.6",
     "normalize.css": "^8.0.1"
   }
 }
