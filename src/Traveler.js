@@ -4,6 +4,7 @@ import Trip from './Trip';
 class Traveler {
   constructor(info) {
     this.id = info.id;
+    this.name = info.name;
     this.trips = [];
     this.travelerType = info.travelerType;
   }

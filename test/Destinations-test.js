@@ -18,7 +18,7 @@ describe('Destinations', () => {
   });
 
   it('should hold an array of destinations', () => {
-    expect(placesToVisit.destinations[0]).to.deep.equal({
+    expect(placesToVisit.list[0]).to.deep.equal({
       id: 1,
       destination: 'Lima, Peru',
       estimatedLodgingCostPerDay: 70,
