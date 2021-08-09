@@ -16,15 +16,21 @@ new Glide('.glide', {
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
-import { requestAllData } from './apiCalls';
+import { requestAllData, postData } from './apiCalls';
 import Destinations from './Destinations';
 import Traveler from './Traveler';
-import { renderDestinations } from './domUpdates';
+import {
+  renderDestinations,
+  renderTraveler,
+  renderCurrentTrip,
+  renderPending,
+} from './domUpdates';
 
 //global variables
 export const userID = 2;
 let currTraveler;
 let destinations;
+let today = dayjs().format('YYYY/MM/DD');
 
 // on page load
 // there will be sign in box
@@ -34,20 +40,34 @@ const loadPage = () => {
   requestAllData().then((data) => {
     currTraveler = new Traveler(data[0]);
     destinations = new Destinations(data[1].destinations);
-
-    renderDestinations(destinations.destinations);
-
     currTraveler.getTrips(data[2].trips);
+
+    const currentTrip = currTraveler.getCurrent(today);
+    const pendingTrips = currTraveler.getPending();
+    console.log(pendingTrips);
+
+    renderTraveler(currTraveler);
+    renderDestinations(destinations.list);
+    renderCurrentTrip(currentTrip, destinations);
+    renderPending(pendingTrips);
   });
 };
 
 loadPage();
 
-// const renderDestinations = (places) => {
-//   const destinationsHtml = document.getElementById('destinations');
+///////
 
-//   places.forEach((place) => {
-//     console.log('butts');
-//     destinationsHtml.innerHTML += `<option id="${place.id}" value="${place.destination}">${place.destination}</option>`;
-//   });
+// let testTrip = {
+//   id: 5005,
+//   userID: 2,
+//   destinationID: 23,
+//   travelers: 2,
+//   date: '2021/08/06',
+//   duration: 10,
+//   status: 'approved',
+//   suggestedActivities: [],
 // };
+
+// postData(testTrip)
+//   .then((response) => response.json())
+//   .then((response) => console.log(response));
