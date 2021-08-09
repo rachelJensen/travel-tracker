@@ -12,3 +12,13 @@ export const requestAllData = () => {
     requestData('http://localhost:3001/api/v1/trips'),
   ]);
 };
+
+export const postData = (data) => {
+  return fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+};
