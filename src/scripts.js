@@ -7,20 +7,6 @@ import './css/base.scss';
 import dayjs from 'dayjs';
 import Glide from '@glidejs/glide';
 
-new Glide('.glide', {
-  // type: 'carousel',
-  startAt: 0,
-  perView: 1,
-  focusAt: 'center',
-}).mount();
-
-new Glide('.glide2', {
-  // type: 'carousel',
-  startAt: 0,
-  perView: 1,
-  focusAt: 'center',
-}).mount();
-
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 import { requestAllData, postData } from './apiCalls';
@@ -36,14 +22,10 @@ import {
 } from './domUpdates';
 
 //global variables
-export const userID = 2;
+export const userID = 44;
 let currTraveler;
 let destinations;
 let today = dayjs().format('YYYY/MM/DD');
-
-// on page load
-// there will be sign in box
-// a submission of a travler will give a number and will fire the big 'ol function
 
 const loadPage = () => {
   requestAllData().then((data) => {
@@ -55,7 +37,7 @@ const loadPage = () => {
     const pendingTrips = currTraveler.getPending();
     const upcomingTrips = currTraveler.getFuture(today);
     const pastTrips = currTraveler.getPast(today);
-    console.log(pastTrips);
+    console.log('allTrips,', currTraveler.trips);
 
     renderTraveler(currTraveler);
     renderDestinations(destinations.list);
@@ -71,13 +53,13 @@ loadPage();
 ///////
 
 // let testTrip = {
-//   id: 5011,
-//   userID: 2,
-//   destinationID: 42,
+//   id: 5021,
+//   userID: 7,
+//   destinationID: 48,
 //   travelers: 2,
-//   date: '2021/08/06',
+//   date: '2021/11/06',
 //   duration: 10,
-//   status: 'approved',
+//   status: 'pending',
 //   suggestedActivities: [],
 // };
 
