@@ -8,7 +8,14 @@ import dayjs from 'dayjs';
 import Glide from '@glidejs/glide';
 
 new Glide('.glide', {
-  type: 'carousel',
+  // type: 'carousel',
+  startAt: 0,
+  perView: 1,
+  focusAt: 'center',
+}).mount();
+
+new Glide('.glide2', {
+  // type: 'carousel',
   startAt: 0,
   perView: 1,
   focusAt: 'center',
@@ -24,6 +31,8 @@ import {
   renderTraveler,
   renderCurrentTrip,
   renderPending,
+  renderFuture,
+  renderPast,
 } from './domUpdates';
 
 //global variables
@@ -44,12 +53,16 @@ const loadPage = () => {
 
     const currentTrip = currTraveler.getCurrent(today);
     const pendingTrips = currTraveler.getPending();
-    console.log(pendingTrips);
+    const upcomingTrips = currTraveler.getFuture(today);
+    const pastTrips = currTraveler.getPast(today);
+    console.log(pastTrips);
 
     renderTraveler(currTraveler);
     renderDestinations(destinations.list);
     renderCurrentTrip(currentTrip, destinations);
-    renderPending(pendingTrips);
+    renderPending(pendingTrips, destinations);
+    renderFuture(upcomingTrips, destinations);
+    renderPast(pastTrips, destinations);
   });
 };
 
@@ -58,9 +71,9 @@ loadPage();
 ///////
 
 // let testTrip = {
-//   id: 5005,
+//   id: 5011,
 //   userID: 2,
-//   destinationID: 23,
+//   destinationID: 42,
 //   travelers: 2,
 //   date: '2021/08/06',
 //   duration: 10,

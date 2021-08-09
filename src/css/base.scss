@@ -29,6 +29,8 @@ h1 {
   margin: 0.2em;
   color: #14213d;
   font-size: 24px;
+  // text-shadow: -1px 1px 0 #e5e5e5, 1px 1px 0 #e5e5e5, 1px -1px 0 #e5e5e5,
+  //   -1px -1px 0 #e5e5e5;
 }
 
 h2 {
@@ -104,7 +106,7 @@ main {
 
 .card {
   height: 70vh;
-  width: 100%;
+  width: 90vw;
 }
 
 .trip-image {
@@ -150,6 +152,6 @@ footer {
 
   .card {
     height: 60vh;
-    width: 100%;
+    width: 22vw;
   }
 }
