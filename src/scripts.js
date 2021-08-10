@@ -19,9 +19,7 @@ import {
   renderPage,
   renderDestinations,
   getEstimate,
-  // makeNewTrip,
   resetForm,
-  // displayEstimate,
   estimateContainer,
   estimateBtn,
   destinationSelection,
@@ -38,14 +36,6 @@ export let destinations;
 export let today = dayjs().format('YYYY/MM/DD');
 export let newTrip;
 
-// const estimateBtn = document.getElementById('estimate');
-// const estimateForm = document.getElementById('estimateForm');
-// const estimateContainer = document.getElementById('estimateDisplay');
-// const guests = document.getElementById('guests');
-// const destinationSelection = document.getElementById('destinations');
-// const startDate = document.getElementById('startDate');
-// const daysOfTrip = document.getElementById('days');
-
 //event listener
 estimateBtn.addEventListener('click', (event) => {
   getEstimate(event);
@@ -54,7 +44,7 @@ estimateContainer.addEventListener('click', (event) => {
   processRequst(event);
 });
 
-//function
+//functions
 const loadPage = () => {
   requestAllData().then((data) => {
     currTraveler = new Traveler(data[0]);
@@ -82,21 +72,6 @@ const loadPage = () => {
 
 loadPage();
 
-// const getEstimate = (event) => {
-//   event.preventDefault();
-
-//   let trip = makeNewTrip();
-
-//   if (trip.travelers && dayjs(trip.date).isAfter(today) && trip.duration) {
-//     estimateForm.classList.add('hidden');
-//     estimateContainer.classList.remove('hidden');
-
-//     displayEstimate(trip);
-//   } else {
-//     console.log('butts');
-//   }
-// };
-
 export const makeNewTrip = () => {
   let id = destinations.list.find(
     (place) => place.destination === destinationSelection.value
@@ -117,32 +92,12 @@ export const makeNewTrip = () => {
   return newTrip;
 };
 
-// const resetForm = () => {
-//   estimateForm.classList.remove('hidden');
-//   estimateContainer.classList.add('hidden');
-// };
-
-// // const displayEstimate = (tripInfo) => {
-// //   estimateContainer.innerHTML = `
-// //     <h3>${destinationSelection.value}</h3>
-// //     <h3>${dayjs(tripInfo.date).format('MMMM D, YYYY')}</h3>
-// //     <h3>Estimated cost for ${tripInfo.travelers} travelers for ${
-// //     tripInfo.duration
-// //   } days is ${tripInfo.calculateCost(destinations)}</h3>
-// //     <div>
-// //       <button id="confirm" >Confirm Selection</button>
-// //       <button id="return" >Try Again</button>
-// //     </div>
-// //     `;
-// // };
-
 const processRequst = (event) => {
   event.preventDefault();
 
   if (event.target.id === 'confirm') {
     postRequest(newTrip);
   }
-
   resetForm();
 };
 

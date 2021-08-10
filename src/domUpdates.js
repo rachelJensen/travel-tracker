@@ -1,14 +1,5 @@
 //imports
-import {
-  // userID,
-  // currTraveler,
-  destinations,
-  makeNewTrip,
-  today,
-  // estimateContainer,
-  //destinationSelection,
-  newTrip,
-} from './scripts';
+import { destinations, makeNewTrip, today } from './scripts';
 import Glide from '@glidejs/glide';
 import dayjs from 'dayjs';
 
