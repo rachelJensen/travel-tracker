@@ -27,6 +27,19 @@ let currTraveler;
 let destinations;
 let today = dayjs().format('YYYY/MM/DD');
 
+const estimateBtn = document.getElementById('estimate');
+const estimateForm = document.getElementById('estimateForm');
+const guests = document.getElementById('guests');
+const destinationSelection = document.getElementById('destinations');
+const startDate = document.getElementById('startDate');
+const endDate = document.getElementById('endDate');
+
+//event listener
+estimateBtn.addEventListener('click', (event) => {
+  getEstimate(event);
+});
+
+//function
 const loadPage = () => {
   requestAllData().then((data) => {
     currTraveler = new Traveler(data[0]);
@@ -49,6 +62,27 @@ const loadPage = () => {
 };
 
 loadPage();
+
+const getEstimate = (event) => {
+  event.preventDefault();
+
+  let estimate = {
+    destination: destinationSelection.value,
+    guests: Number(guests.value),
+    startDate: dayjs(startDate.value),
+    endDate: dayjs(endDate.value),
+  };
+
+  if (
+    estimate.guests &&
+    estimate.startDate.isAfter(today) &&
+    estimate.endDate.isAfter(estimate.startDate)
+  ) {
+    console.log(estimate);
+  } else {
+    console.log('butts');
+  }
+};
 
 ///////
 
