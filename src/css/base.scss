@@ -69,6 +69,14 @@ main {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.estimate-container {
+  @include flex-center;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0px 10px 13px -7px #000000;
+  padding: 0.5em;
+}
+
 .dropdown {
   grid-column: 1/4;
 }
@@ -87,6 +95,10 @@ main {
 
 .estimate {
   grid-column: 1/5;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .travel-grid {
