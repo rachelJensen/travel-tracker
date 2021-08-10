@@ -47,9 +47,11 @@ class Traveler {
   }
 
   getFuture(today) {
-    return this.trips.filter((trip) => {
-      return dayjs(trip.date).isAfter(dayjs(today));
-    });
+    return this.trips
+      .filter((trip) => {
+        return dayjs(trip.date).isAfter(dayjs(today));
+      })
+      .filter((trip) => trip.status === 'approved');
   }
 
   getPast(today) {
