@@ -39,12 +39,6 @@ export const renderPending = (pending, destinations) => {
     const tripInfo = pending[0].reportTripInfo(destinations);
     renderCard(pendingTrips, tripInfo);
   }
-  // else {
-  //   const tripInfo = pending.map((item) => {
-  //     return item.reportTripInfo(destinations);
-  //   });
-  //   renderGlide(pendingTrips, tripInfo);
-  // }
 };
 
 export const renderFuture = (future, destinations) => {
