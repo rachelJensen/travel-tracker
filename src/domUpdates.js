@@ -17,7 +17,7 @@ import dayjs from 'dayjs';
 // const destinationSelection = document.getElementById('destinations');
 
 // DOM render functions
-export const renderTraveler = (traveler) => {
+const renderTraveler = (traveler) => {
   const user = document.getElementById('userName');
 
   user.innerText = traveler.name;
@@ -31,7 +31,7 @@ export const renderDestinations = (places) => {
   });
 };
 
-export const renderCurrentTrip = (trip, destinations) => {
+const renderCurrentTrip = (trip, destinations) => {
   const current = document.getElementById('currentTrip');
 
   if (trip === 'none') {
@@ -42,18 +42,18 @@ export const renderCurrentTrip = (trip, destinations) => {
   }
 };
 
-export const renderPending = (pending, destinations) => {
+const renderPending = (pending, destinations) => {
   const pendingTrips = document.getElementById('pending');
 
   if (pending.length === 0) {
-    renderPlaceholder('No pending, just fun', pendingTrips);
-  } else if (pending.length === 1) {
-    const tripInfo = pending[0].reportTripInfo(destinations);
+    renderPlaceholder('No trips pending', pendingTrips);
+  } else if (pending.length > 0) {
+    const tripInfo = pending[pending.length - 1].reportTripInfo(destinations);
     renderCard(pendingTrips, tripInfo);
   }
 };
 
-export const renderFuture = (future, destinations) => {
+const renderFuture = (future, destinations) => {
   let futureTrips = document.getElementById('upcoming');
 
   if (future.length === 0) {
@@ -76,7 +76,7 @@ export const renderFuture = (future, destinations) => {
   }
 };
 
-export const renderPast = (past, destinations) => {
+const renderPast = (past, destinations) => {
   let pastTrips = document.getElementById('past');
 
   if (past.length === 0) {
@@ -135,7 +135,7 @@ const renderGlide = (element, trips) => {
   element.innerHTML = compiledHTML;
 };
 
-export const renderAnnualCost = (cost) => {
+const renderAnnualCost = (cost) => {
   const displayCost = document.getElementById('annualCost');
 
   displayCost.innerText = `You have spent $${cost} on travel this year.`;
@@ -150,9 +150,7 @@ export const renderPage = (
   pastTrips,
   cost
 ) => {
-  //functions
   renderTraveler(traveler);
-  renderDestinations(places);
   renderCurrentTrip(currTrip, places);
   renderPending(pendTrips, places);
   renderFuture(futTrips, places);

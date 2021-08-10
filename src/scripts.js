@@ -15,20 +15,11 @@ import './images/turing-logo.png';
 import { requestAllData, postData } from './apiCalls';
 import Destinations from './Destinations';
 import Traveler from './Traveler';
-import {
-  renderPage,
-  renderDestinations,
-  renderTraveler,
-  renderCurrentTrip,
-  renderPending,
-  renderFuture,
-  renderPast,
-  renderAnnualCost,
-} from './domUpdates';
+import { renderPage, renderDestinations } from './domUpdates';
 import Trip from './Trip';
 
 //global variables
-export const userID = 44;
+export const userID = 23;
 let currTraveler;
 let destinations;
 export let today = dayjs().format('YYYY/MM/DD');
@@ -48,11 +39,9 @@ const goBack = document.getElementById('return');
 estimateBtn.addEventListener('click', (event) => {
   getEstimate(event);
 });
-confirm.addEventListener('click', () => {
-  submitTrip();
-});
-goBack.addEventListener('click', () => {
-  resetForm();
+
+estimateContainer.addEventListener('click', (event) => {
+  processRequst(event);
 });
 
 //function
@@ -68,16 +57,16 @@ const loadPage = () => {
     const pastTrips = currTraveler.getPast(today);
     const annualCost = currTraveler.calculateAnnualCosts(today, destinations);
 
-    // goBack.addEventListener('click', resetForm);
-    // confirm.addEventListener('click', submitTrip);
-
-    renderTraveler(currTraveler);
     renderDestinations(destinations.list);
-    renderCurrentTrip(currentTrip, destinations);
-    renderPending(pendingTrips, destinations);
-    renderFuture(upcomingTrips, destinations);
-    renderPast(pastTrips, destinations);
-    renderAnnualCost(annualCost);
+    renderPage(
+      currTraveler,
+      destinations,
+      currentTrip,
+      pendingTrips,
+      upcomingTrips,
+      pastTrips,
+      annualCost
+    );
   });
 };
 
@@ -93,7 +82,6 @@ const getEstimate = (event) => {
     estimateContainer.classList.remove('hidden');
 
     displayEstimate(trip);
-    // console.log('newTrip', newTrip);
   } else {
     console.log('butts');
   }
@@ -106,7 +94,7 @@ const makeNewTrip = () => {
 
   let trip = {
     id: Date.now(),
-    userID: currTraveler,
+    userID: currTraveler.id,
     destinationID: id.id,
     travelers: parseInt(guests.value),
     date: dayjs(startDate.value).format('YYYY/MM/DD'),
@@ -120,8 +108,6 @@ const makeNewTrip = () => {
 };
 
 const resetForm = () => {
-  // event.preventDefault();
-  console.log('resetFrom hit');
   estimateForm.classList.remove('hidden');
   estimateContainer.classList.add('hidden');
 };
@@ -140,16 +126,30 @@ const displayEstimate = (tripInfo) => {
     `;
 };
 
+const processRequst = (event) => {
+  event.preventDefault();
+
+  if (event.target.id === 'confirm') {
+    submitTrip();
+  }
+
+  resetForm();
+};
+
 ///////
 
 const submitTrip = () => {
   console.log(newTrip);
 
-  //postRequest(newTrip);
+  postRequest(newTrip);
+  loadPage();
 };
 
 const postRequest = (tripToPost) => {
-  postData(testTrip)
+  postData(tripToPost)
     .then((response) => response.json())
-    .then((response) => console.log(response));
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
 };
