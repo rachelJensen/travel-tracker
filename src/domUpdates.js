@@ -168,6 +168,7 @@ export const getEstimate = (event) => {
     displayEstimate(trip);
   } else {
     console.log('butts');
+    displayError();
   }
 };
 
@@ -188,4 +189,14 @@ export const displayEstimate = (tripInfo) => {
       <button id="return" >Try Again</button>
     </div>
     `;
+};
+
+const displayError = () => {
+  const error = document.getElementById('errorMessage');
+
+  error.innerText = `*** Please fill out all information ***`;
+
+  setTimeout(() => {
+    error.innerText = '';
+  }, 3000);
 };
