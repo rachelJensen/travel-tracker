@@ -19,7 +19,7 @@ import { renderPage, renderDestinations } from './domUpdates';
 import Trip from './Trip';
 
 //global variables
-export const userID = 23;
+export const userID = 44;
 let currTraveler;
 let destinations;
 export let today = dayjs().format('YYYY/MM/DD');
@@ -130,26 +130,17 @@ const processRequst = (event) => {
   event.preventDefault();
 
   if (event.target.id === 'confirm') {
-    submitTrip();
+    postRequest(newTrip);
   }
 
   resetForm();
-};
-
-///////
-
-const submitTrip = () => {
-  console.log(newTrip);
-
-  postRequest(newTrip);
-  loadPage();
 };
 
 const postRequest = (tripToPost) => {
   postData(tripToPost)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
-      return response;
+      console.log(response.message);
+      loadPage();
     });
 };
