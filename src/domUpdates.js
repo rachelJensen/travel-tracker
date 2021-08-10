@@ -1,8 +1,20 @@
 //imports
-import { userID, currentTraveler, destinations } from './scripts';
+import {
+  userID,
+  currentTraveler,
+  destinations,
+  makeNewTrip,
+  today,
+  estimateContainer,
+  destinationSelection,
+} from './scripts';
 import Glide from '@glidejs/glide';
+import dayjs from 'dayjs';
 
 //query selectors
+// const estimateForm = document.getElementById('estimateForm');
+// const estimateContainer = document.getElementById('estimateDisplay');
+// const destinationSelection = document.getElementById('destinations');
 
 // DOM render functions
 export const renderTraveler = (traveler) => {
@@ -123,13 +135,27 @@ const renderGlide = (element, trips) => {
   element.innerHTML = compiledHTML;
 };
 
-const renderPage = (places, currTrip, pendingTrips) => {
+export const renderAnnualCost = (cost) => {
+  const displayCost = document.getElementById('annualCost');
+
+  displayCost.innerText = `You have spent $${cost} on travel this year.`;
+};
+
+export const renderPage = (
+  traveler,
+  places,
+  currTrip,
+  pendTrips,
+  futTrips,
+  pastTrips,
+  cost
+) => {
   //functions
-  // render Traveler Greeting
-  // render Upcoming Trips
-  // render Past Adventures
-  renderCurrentTrip(currTrip, places);
-  renderPending(pendingTrips, places);
-  // render total spent?
+  renderTraveler(traveler);
   renderDestinations(places);
+  renderCurrentTrip(currTrip, places);
+  renderPending(pendTrips, places);
+  renderFuture(futTrips, places);
+  renderPast(pastTrips, places);
+  renderAnnualCost(cost);
 };

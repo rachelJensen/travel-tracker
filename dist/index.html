@@ -14,7 +14,7 @@
   <header>
     <nav>
       <div class="user-greeting">
-        <img>
+        <!-- <img> -->
         <p id="userName">Traveler Name</p>
       </div>
       <button>Logout</button>
@@ -32,17 +32,17 @@
           <button id="estimate" class="estimate">Get Estimate</button>
         </div>
         
-        <div id="estimateDisplay" class="estimate-container hidden">
-          <h3>Destination</h3>
-          <h3>Dates</h3>
-          <h3>Estimated cost for # travelers for # days is $$$</h3>
-          <div>
-            <button id="confirm" >Confirm Selection</button>
-            <button id="return" >Try Again</button>
-          </div>  
-        </div> 
-
+        
       </form>
+      <div id="estimateDisplay" class="estimate-container hidden">
+        <h3>Destination</h3>
+        <h3>Dates</h3>
+        <h3>Estimated cost for # travelers for # days is $$$</h3>
+        <div>
+          <button id="confirm" >Confirm Selection</button>
+          <button id="return" >Try Again</button>
+        </div>  
+      </div> 
 
 
     </container>
@@ -97,7 +97,9 @@
       </section>
     </container>
   </main>
-  <footer></footer>
+  <footer>
+    <p id="annualCost">Cost goes here</p>
+  </footer>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
 

@@ -16,12 +16,14 @@ import { requestAllData, postData } from './apiCalls';
 import Destinations from './Destinations';
 import Traveler from './Traveler';
 import {
+  renderPage,
   renderDestinations,
   renderTraveler,
   renderCurrentTrip,
   renderPending,
   renderFuture,
   renderPast,
+  renderAnnualCost,
 } from './domUpdates';
 import Trip from './Trip';
 
@@ -29,7 +31,8 @@ import Trip from './Trip';
 export const userID = 44;
 let currTraveler;
 let destinations;
-let today = dayjs().format('YYYY/MM/DD');
+export let today = dayjs().format('YYYY/MM/DD');
+let newTrip;
 
 const estimateBtn = document.getElementById('estimate');
 const estimateForm = document.getElementById('estimateForm');
@@ -45,6 +48,12 @@ const goBack = document.getElementById('return');
 estimateBtn.addEventListener('click', (event) => {
   getEstimate(event);
 });
+confirm.addEventListener('click', () => {
+  submitTrip();
+});
+goBack.addEventListener('click', () => {
+  resetForm();
+});
 
 //function
 const loadPage = () => {
@@ -57,7 +66,10 @@ const loadPage = () => {
     const pendingTrips = currTraveler.getPending();
     const upcomingTrips = currTraveler.getFuture(today);
     const pastTrips = currTraveler.getPast(today);
-    console.log('allTrips,', currTraveler.trips);
+    const annualCost = currTraveler.calculateAnnualCosts(today, destinations);
+
+    // goBack.addEventListener('click', resetForm);
+    // confirm.addEventListener('click', submitTrip);
 
     renderTraveler(currTraveler);
     renderDestinations(destinations.list);
@@ -65,6 +77,7 @@ const loadPage = () => {
     renderPending(pendingTrips, destinations);
     renderFuture(upcomingTrips, destinations);
     renderPast(pastTrips, destinations);
+    renderAnnualCost(annualCost);
   });
 };
 
@@ -80,6 +93,7 @@ const getEstimate = (event) => {
     estimateContainer.classList.remove('hidden');
 
     displayEstimate(trip);
+    // console.log('newTrip', newTrip);
   } else {
     console.log('butts');
   }
@@ -101,8 +115,15 @@ const makeNewTrip = () => {
     suggestedActivities: [],
   };
 
-  trip = new Trip(trip);
-  return trip;
+  newTrip = new Trip(trip);
+  return newTrip;
+};
+
+const resetForm = () => {
+  // event.preventDefault();
+  console.log('resetFrom hit');
+  estimateForm.classList.remove('hidden');
+  estimateContainer.classList.add('hidden');
 };
 
 const displayEstimate = (tripInfo) => {
@@ -121,17 +142,14 @@ const displayEstimate = (tripInfo) => {
 
 ///////
 
-// let testTrip = {
-//   id: 5021,
-//   userID: 7,
-//   destinationID: 48,
-//   travelers: 2,
-//   date: '2021/11/06',
-//   duration: 10,
-//   status: 'pending',
-//   suggestedActivities: [],
-// };
+const submitTrip = () => {
+  console.log(newTrip);
 
-// postData(testTrip)
-//   .then((response) => response.json())
-//   .then((response) => console.log(response));
+  //postRequest(newTrip);
+};
+
+const postRequest = (tripToPost) => {
+  postData(testTrip)
+    .then((response) => response.json())
+    .then((response) => console.log(response));
+};
