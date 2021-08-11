@@ -48,7 +48,7 @@ Booking a trip is easy too. After selecting a destination, a departure date, the
 
 tablet view                   |  mobile view
 :-------------------------:|:-------------------------:
-![Tablet](https://user-images.githubusercontent.com/81662051/128973508-7b2856ad-d933-41d9-96b6-1fe7f9b629e1.png) | ![Screen Shot 2021-08-10 at 11 19 55 PM](https://user-images.githubusercontent.com/81662051/128973678-db57d0cc-bec1-4c62-9876-1d37c41a91d7.png)
+![Tablet](https://user-images.githubusercontent.com/81662051/128973508-7b2856ad-d933-41d9-96b6-1fe7f9b629e1.png) | ![iPhone](https://user-images.githubusercontent.com/81662051/128973882-61cbde7f-0c43-4466-a6f5-1c79b0e99e3b.png)
 
 ## Possible Future Extensions
 
