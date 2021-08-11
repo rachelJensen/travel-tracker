@@ -48,7 +48,7 @@ Booking a trip is easy too. After selecting a destination, a departure date, the
 
 <!-- tablet view                   |  mobile view
 :-------------------------:|:-------------------------:
-![get-fit-tablet](https://user-images.githubusercontent.com/80136642/126420111-1f1d0285-84c6-45a6-94dc-f9cb51efd868.gif) | ![get-fit-mobile](https://user-images.githubusercontent.com/80136642/126420083-041e9209-4b44-4368-bdb8-5ded3b8852ea.gif) --> -->
+![Tablet](https://user-images.githubusercontent.com/81662051/128973508-7b2856ad-d933-41d9-96b6-1fe7f9b629e1.png) | ![get-fit-mobile](https://user-images.githubusercontent.com/80136642/126420083-041e9209-4b44-4368-bdb8-5ded3b8852ea.gif) --> -->
 
 ## Possible Future Extensions
 
