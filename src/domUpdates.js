@@ -1,20 +1,16 @@
 //imports
-import {
-  userID,
-  currentTraveler,
-  destinations,
-  makeNewTrip,
-  today,
-  estimateContainer,
-  destinationSelection,
-} from './scripts';
+import { destinations, makeNewTrip, today } from './scripts';
 import Glide from '@glidejs/glide';
 import dayjs from 'dayjs';
 
 //query selectors
-// const estimateForm = document.getElementById('estimateForm');
-// const estimateContainer = document.getElementById('estimateDisplay');
-// const destinationSelection = document.getElementById('destinations');
+export const estimateBtn = document.getElementById('estimate');
+const estimateForm = document.getElementById('estimateForm');
+export const estimateContainer = document.getElementById('estimateDisplay');
+export const guests = document.getElementById('guests');
+export const destinationSelection = document.getElementById('destinations');
+export const startDate = document.getElementById('startDate');
+export const daysOfTrip = document.getElementById('days');
 
 // DOM render functions
 const renderTraveler = (traveler) => {
@@ -156,4 +152,50 @@ export const renderPage = (
   renderFuture(futTrips, places);
   renderPast(pastTrips, places);
   renderAnnualCost(cost);
+};
+
+//////
+
+export const getEstimate = (event) => {
+  event.preventDefault();
+
+  let trip = makeNewTrip();
+
+  if (trip.travelers && dayjs(trip.date).isAfter(today) && trip.duration) {
+    estimateForm.classList.add('hidden');
+    estimateContainer.classList.remove('hidden');
+
+    displayEstimate(trip);
+  } else {
+    displayError('Please fill in all the fields');
+  }
+};
+
+export const resetForm = () => {
+  estimateForm.classList.remove('hidden');
+  estimateContainer.classList.add('hidden');
+};
+
+export const displayEstimate = (tripInfo) => {
+  estimateContainer.innerHTML = `
+    <h3>${destinationSelection.value}</h3>
+    <h3>${dayjs(tripInfo.date).format('MMMM D, YYYY')}</h3>
+    <h3>Estimated cost for ${tripInfo.travelers} travelers for ${
+    tripInfo.duration
+  } days is ${tripInfo.calculateCost(destinations)}</h3>
+    <div>
+      <button id="confirm" >Confirm Selection</button>
+      <button id="return" >Try Again</button>
+    </div>
+    `;
+};
+
+export const displayError = (message) => {
+  const error = document.getElementById('errorMessage');
+
+  error.innerText = `*** ${message} ***`;
+
+  setTimeout(() => {
+    error.innerText = '';
+  }, 3000);
 };

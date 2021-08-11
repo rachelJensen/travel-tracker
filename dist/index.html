@@ -10,7 +10,6 @@
   <title>Adventure Tracker</title>
 </head>
 <body>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
   <header>
     <nav>
       <div class="user-greeting">
@@ -22,6 +21,7 @@
     <container class="next-Adventure">
       <form>
         <h1>Find Your Next Adventure</h1>
+        <p id="errorMessage" class="error"></p>
         <div id="estimateForm" class="input-container">
           <select class="dropdown" placeholder="Destinations" id="destinations" aria-label="destination-menu">
             <!-- all the the destinations load here  -->
@@ -33,12 +33,8 @@
         </div>
         <div id="estimateDisplay" class="estimate-container hidden">
           <!-- estimate display goes here -->
-        </div> 
-        
-        
+        </div>         
       </form>
-
-
     </container>
   </header>
   <main>
@@ -86,13 +82,13 @@
       <section>
         <h2>Pending</h2>
         <article id="pending" class="trip-display">
-
+          <!-- pending trip goes here -->
         </article>
       </section>
     </container>
   </main>
   <footer>
-    <p id="annualCost">Cost goes here</p>
+    <p id="annualCost" class="cost-report"></p>
   </footer>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
