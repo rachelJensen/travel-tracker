@@ -167,8 +167,7 @@ export const getEstimate = (event) => {
 
     displayEstimate(trip);
   } else {
-    console.log('butts');
-    displayError();
+    displayError('Please fill in all the fields');
   }
 };
 
@@ -191,10 +190,10 @@ export const displayEstimate = (tripInfo) => {
     `;
 };
 
-const displayError = () => {
+export const displayError = (message) => {
   const error = document.getElementById('errorMessage');
 
-  error.innerText = `*** Please fill out all information ***`;
+  error.innerText = `*** ${message} ***`;
 
   setTimeout(() => {
     error.innerText = '';

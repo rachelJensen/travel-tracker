@@ -26,6 +26,7 @@ import {
   guests,
   startDate,
   daysOfTrip,
+  displayError,
 } from './domUpdates';
 import Trip from './Trip';
 
@@ -101,11 +102,22 @@ const processRequst = (event) => {
   resetForm();
 };
 
+const checkForError = (response) => {
+  console.log('response', response);
+  if (response.message.includes('successfully posted')) {
+    return response;
+  } else {
+    throw new Error('unsuccessful post');
+  }
+};
+
 const postRequest = (tripToPost) => {
   postData(tripToPost)
     .then((response) => response.json())
+    .then((response) => checkForError(response))
     .then((response) => {
       console.log(response.message);
       loadPage();
-    });
+    })
+    .catch((err) => displayError('Something went wrong. Please try again.'));
 };
