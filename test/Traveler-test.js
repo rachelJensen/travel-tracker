@@ -110,7 +110,7 @@ describe('Traveler', () => {
 
     let futureTrips = visitor.getFuture('2021/08/06');
 
-    expect(futureTrips.length).to.equal(2);
+    expect(futureTrips.length).to.equal(1);
     expect(futureTrips[0]).to.be.instanceOf(Trip);
   });
 
