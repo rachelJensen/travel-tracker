@@ -119,8 +119,9 @@ main {
   width: 90vw;
 
   .trip-image {
-    height: 50%;
+    height: 70%;
     width: 100%;
+    object-fit: cover;
   }
 
   h3,
