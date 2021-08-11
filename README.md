@@ -1,6 +1,6 @@
 # Adventure Tracker
 
-<img width="1920" alt="adventure-tracker-screenshot" src="https://user-images.githubusercontent.com/81662051/128963670-4287d9e7-7d05-4d96-9c27-139a30922ca2.png">
+<img width="1920" alt="adventure-tracker-screenshot" src="https://user-images.githubusercontent.com/81662051/128973134-b0c86ba1-8fe8-44ad-b85a-539fee6eae87.png">
 
 ## Table of Contents
 
@@ -44,7 +44,7 @@ Booking a trip is easy too. After selecting a destination, a departure date, the
 
 ## Illustrations
 
-![Laptop View](https://user-images.githubusercontent.com/81662051/128963670-4287d9e7-7d05-4d96-9c27-139a30922ca2.png)
+![Laptop View](![Screen Shot 2021-08-10 at 11 12 50 PM](https://user-images.githubusercontent.com/81662051/128973134-b0c86ba1-8fe8-44ad-b85a-539fee6eae87.png))
 
 <!-- tablet view                   |  mobile view
 :-------------------------:|:-------------------------:
