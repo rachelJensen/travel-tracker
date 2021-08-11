@@ -27,17 +27,23 @@ import {
   startDate,
   daysOfTrip,
   displayError,
+  showLogin,
 } from './domUpdates';
 import Trip from './Trip';
 
 //global variables
-export const userID = 44;
+export let userID = 1;
 export let currTraveler;
 export let destinations;
 export let today = dayjs().format('YYYY/MM/DD');
 export let newTrip;
+const nameLogin = document.getElementById('name');
+const password = document.getElementById('password');
+const loginBtn = document.getElementById('submit');
 
 //event listener
+// window.addEventListener('load', showLogin);
+
 estimateBtn.addEventListener('click', (event) => {
   getEstimate(event);
 });
@@ -45,7 +51,27 @@ estimateContainer.addEventListener('click', (event) => {
   processRequst(event);
 });
 
+loginBtn.addEventListener('submit', () => {
+  loginTraveler();
+});
+
 //functions
+
+const loginTraveler = () => {
+  let user = parseInt(nameLogin.value.slice(8));
+  console.log('typeof', user);
+
+  if (user > 0 && user < 50 && password.value === 'travel') {
+    userID = user;
+    console.log('success', user);
+    loadPage();
+    showLogin();
+  } else {
+    displayError('Login name or password incorrect. Please try again');
+    console.log('failure is great');
+  }
+};
+
 const loadPage = () => {
   requestAllData().then((data) => {
     currTraveler = new Traveler(data[0]);
@@ -57,6 +83,8 @@ const loadPage = () => {
     const upcomingTrips = currTraveler.getFuture(today);
     const pastTrips = currTraveler.getPast(today);
     const annualCost = currTraveler.calculateAnnualCosts(today, destinations);
+
+    console.log('loading bitches!');
 
     renderDestinations(destinations.list);
     renderPage(
@@ -71,7 +99,7 @@ const loadPage = () => {
   });
 };
 
-loadPage();
+//loadPage();
 
 export const makeNewTrip = () => {
   let id = destinations.list.find(

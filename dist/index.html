@@ -11,10 +11,10 @@
 </head>
 <body>
   <header>
-    <nav>
+    <nav id="navBar" class="hidden">
       <div class="user-greeting">
         <!-- <img> -->
-        <p id="userName">Traveler Name</p>
+        <p id="userName"></p>
       </div>
       <button>Logout</button>
     </nav>
@@ -22,7 +22,7 @@
       <form>
         <h1>Find Your Next Adventure</h1>
         <p id="errorMessage" class="error"></p>
-        <div id="estimateForm" class="input-container">
+        <div id="estimateForm" class="input-container hidden">
           <select class="dropdown" placeholder="Destinations" id="destinations" aria-label="destination-menu">
             <!-- all the the destinations load here  -->
           </select>
@@ -33,12 +33,19 @@
         </div>
         <div id="estimateDisplay" class="estimate-container hidden">
           <!-- estimate display goes here -->
-        </div>         
+        </div>  
+        <div id="login" class="estimate-container">
+          <label for="name">Login name:</label>
+          <input type="text" id="name" name="name" required> 
+          <label for="password">Password:</label>
+          <input type="text" id="password" name="name" required> 
+          <button id="submit">Submit</button>
+        </div>       
       </form>
     </container>
   </header>
   <main>
-    <container class="travel-grid">
+    <container id="travelGrid" class="travel-grid hidden">
       <section>
         <h2>Upcoming Trips</h2>
         <article id="upcoming" class="trip-display">
@@ -88,7 +95,7 @@
     </container>
   </main>
   <footer>
-    <p id="annualCost" class="cost-report"></p>
+    <p id="annualCost" class="cost-report hidden"></p>
   </footer>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
