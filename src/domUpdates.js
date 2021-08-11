@@ -43,13 +43,25 @@ const renderCurrentTrip = (trip, destinations) => {
 };
 
 const renderPending = (pending, destinations) => {
-  const pendingTrips = document.getElementById('pending');
+  let pendingTrips = document.getElementById('pending');
 
   if (pending.length === 0) {
     renderPlaceholder('No trips pending', pendingTrips);
-  } else if (pending.length > 0) {
+  } else if (pending.length === 1) {
     const tripInfo = pending[pending.length - 1].reportTripInfo(destinations);
     renderCard(pendingTrips, tripInfo);
+  } else {
+    pendingTrips = document.getElementById('pendingSlides');
+    const tripInfo = pending.map((item) => {
+      return item.reportTripInfo(destinations);
+    });
+    renderGlide(pendingTrips, tripInfo);
+    new Glide('.glide3', {
+      type: 'carousel',
+      startAt: 0,
+      perView: 1,
+      focusAt: 'center',
+    }).mount();
   }
 };
 
@@ -184,7 +196,7 @@ export const displayEstimate = (tripInfo) => {
     <h3>${dayjs(tripInfo.date).format('MMMM D, YYYY')}</h3>
     <h3>Estimated cost for ${tripInfo.travelers} travelers for ${
     tripInfo.duration
-  } days is ${tripInfo.calculateCost(destinations)}</h3>
+  } days is $${tripInfo.calculateCost(destinations)}</h3>
     <div>
       <button id="confirm" >Confirm Selection</button>
       <button id="return" >Try Again</button>

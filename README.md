@@ -1,30 +1,86 @@
-# Webpack Starter Kit
+# Adventure Tracker
 
-## Clone This Repo
+<img width="1920" alt="adventure-tracker-screenshot" src="https://user-images.githubusercontent.com/81662051/128963670-4287d9e7-7d05-4d96-9c27-139a30922ca2.png">
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Table of Contents
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Illustrations](#illustrations)
+- [Possible Future Extensions](#possible-future-extensions)
+- [Set Up](#set-up)
+- [Organizational Resources](#organizational-resources)
+- [Sources](#sources)
+- [Contributors](#contributors)
+- [Project Specs](#project-specs)
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Introduction
 
-## Setup
+Adventure Tracker is a travel dashboard which allows the user to see upcoming trips, past adventures, as well as get quotes travel and book the trips they want.
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+## Technologies
 
-Then install the library dependencies. Run:
+- Javascript
+- HTML
+- SCSS
+- Webpack
+- API Fetch calls
+- [Glide.js](https://glidejs.com/)
+- [Dayjs](https://day.js.org/en/)
 
-```bash
-npm install
-```
+## Features
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+After logging in, the dashboard displays..
 
-## Where to Add Your Code
+- Search options for booking a new trip
+- Past trips
+- Upcoming trips
+- A current trip
+- Pending Trips
+- A summary of annual trip spending
+
+Booking a trip is easy too. After selecting a destination, a departure date, the number of travelers and the length of the trip, the user can get a bundled quote for flights and lodging. With a single click, they can book their trip and it will immediately display in their pending trips.
+
+## Illustrations
+
+![Laptop View](https://user-images.githubusercontent.com/81662051/128963670-4287d9e7-7d05-4d96-9c27-139a30922ca2.png)
+
+<!-- tablet view                   |  mobile view
+:-------------------------:|:-------------------------:
+![get-fit-tablet](https://user-images.githubusercontent.com/80136642/126420111-1f1d0285-84c6-45a6-94dc-f9cb51efd868.gif) | ![get-fit-mobile](https://user-images.githubusercontent.com/80136642/126420083-041e9209-4b44-4368-bdb8-5ded3b8852ea.gif) --> -->
+
+## Possible Future Extensions
+
+- Refine styling
+- Set up a adminstrator class to be able to approve pending trips, add suggested activities and update destinations
+- Add more robust login credentials
+
+## Set Up
+
+<!-- 1. Fork this repo
+2. In your terminal run `git clone git@github.com:rachelJensen/get-fit.git`
+3. In your terminal clone down this API [repo](https://github.com/turingschool-examples/fitlit-api)
+4. In a new terminal window cd into the API directory and run npm install and then npm start
+5. Finally, open a browser and go to `localhost:8080` -->
+
+## Organizational Resources
+
+- [Project-Board](https://github.com/rachelJensen/travel-tracker/projects/1)
+- [Miro-Wireframing](https://miro.com/app/board/o9J_l3gbd9Y=/)
+
+## Sources
+
+- [MDN](http://developer.mozilla.org/en-US/)
+- [CSS-TRICKS](https://css-tricks.com/)
+
+## Contributors
+
+- [Rachel Jensen](https://github.com/rachelJensen)
+
+## Project Specs
+
+- The details of this project are outlined in [this project spec](https://frontend.turing.edu/projects/travel-tracker.html).
 
 ### JavaScript
 
@@ -90,7 +146,7 @@ The test results will output to the terminal.
 
 Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
 
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
+Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
 
 ## Webpack?
 
