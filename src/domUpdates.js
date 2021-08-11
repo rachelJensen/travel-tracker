@@ -104,7 +104,9 @@ const renderCard = (element, info) => {
     <div class="card">
       <img class="trip-image" src=${info.image} alt=${info.alt}>
       <h3>${info.destination}</h3>
-      <h4>${info.startDate} - ${info.endDate}</h4>
+      <h4>${dayjs(info.startDate).format('MMMM D, YYYY')} - ${dayjs(
+    info.endDate
+  ).format('MMMM D, YYYY')}</h4>
     </div>`;
 };
 
@@ -114,7 +116,9 @@ const renderGlide = (element, trips) => {
     <li class="glide__slide card">
       <img class="trip-image" src=${info.image} alt=${info.alt}>
       <h3>${info.destination}</h3>
-      <h4>${info.startDate} - ${info.endDate}</h4>
+      <h4>${dayjs(info.startDate).format('MMMM D, YYYY')} - ${dayjs(
+      info.endDate
+    ).format('MMMM D, YYYY')}</h4>
     </li>`;
   });
 
