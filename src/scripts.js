@@ -51,7 +51,7 @@ estimateContainer.addEventListener('click', (event) => {
   processRequst(event);
 });
 
-loginBtn.addEventListener('submit', () => {
+loginBtn.addEventListener('click', () => {
   loginTraveler();
 });
 
@@ -59,16 +59,13 @@ loginBtn.addEventListener('submit', () => {
 
 const loginTraveler = () => {
   let user = parseInt(nameLogin.value.slice(8));
-  console.log('typeof', user);
 
   if (user > 0 && user < 50 && password.value === 'travel') {
     userID = user;
-    console.log('success', user);
     loadPage();
     showLogin();
   } else {
     displayError('Login name or password incorrect. Please try again');
-    console.log('failure is great');
   }
 };
 
@@ -84,8 +81,6 @@ const loadPage = () => {
     const pastTrips = currTraveler.getPast(today);
     const annualCost = currTraveler.calculateAnnualCosts(today, destinations);
 
-    console.log('loading bitches!');
-
     renderDestinations(destinations.list);
     renderPage(
       currTraveler,
@@ -98,8 +93,6 @@ const loadPage = () => {
     );
   });
 };
-
-//loadPage();
 
 export const makeNewTrip = () => {
   let id = destinations.list.find(
