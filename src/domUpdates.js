@@ -19,7 +19,6 @@ const displayCost = document.getElementById('annualCost');
 // DOM render functions
 const renderTraveler = (traveler) => {
   const user = document.getElementById('userName');
-
   user.innerText = traveler.name;
 };
 
@@ -43,71 +42,52 @@ const renderCurrentTrip = (trip, destinations) => {
 };
 
 const renderPending = (pending, destinations) => {
-  let pendingTrips = document.getElementById('pending');
+  let pendingTrips = document.getElementById('pendingSlides');
 
-  if (pending.length === 0) {
-    renderPlaceholder('No trips pending', pendingTrips);
-  } else if (pending.length === 1) {
-    const tripInfo = pending[pending.length - 1].reportTripInfo(destinations);
-    renderCard(pendingTrips, tripInfo);
-  } else {
-    pendingTrips = document.getElementById('pendingSlides');
-    const tripInfo = pending.map((item) => {
-      return item.reportTripInfo(destinations);
-    });
-    renderGlide(pendingTrips, tripInfo);
-    new Glide('.glide3', {
-      type: 'carousel',
-      startAt: 0,
-      perView: 1,
-      focusAt: 'center',
-    }).mount();
-  }
+  setupDisplay(pending, destinations, pendingTrips);
+
+  new Glide('.glide3', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1,
+    focusAt: 'center',
+  }).mount();
 };
 
 const renderFuture = (future, destinations) => {
-  let futureTrips = document.getElementById('upcoming');
+  let futureTrips = document.getElementById('upcomingSlides');
 
-  if (future.length === 0) {
-    renderPlaceholder('Time to book something new!', futureTrips);
-  } else if (future.length === 1) {
-    const tripInfo = future[0].reportTripInfo(destinations);
-    renderCard(futureTrips, tripInfo);
-  } else {
-    futureTrips = document.getElementById('upcomingSlides');
-    const tripInfo = future.map((item) => {
-      return item.reportTripInfo(destinations);
-    });
-    renderGlide(futureTrips, tripInfo);
-    new Glide('.glide', {
-      type: 'carousel',
-      startAt: 0,
-      perView: 1,
-      focusAt: 'center',
-    }).mount();
-  }
+  setupDisplay(future, destinations, futureTrips);
+
+  new Glide('.glide', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1,
+    focusAt: 'center',
+  }).mount();
 };
 
 const renderPast = (past, destinations) => {
-  let pastTrips = document.getElementById('past');
+  let pastTrips = document.getElementById('pastSlides');
 
-  if (past.length === 0) {
-    renderPlaceholder('Wanna make some memories', pastTrips);
-  } else if (past.length === 1) {
-    const tripInfo = past[0].reportTripInfo(destinations);
-    renderCard(pastTrips, tripInfo);
-  } else {
-    pastTrips = document.getElementById('pastSlides');
-    const tripInfo = past.map((item) => {
+  setupDisplay(past, destinations, pastTrips);
+
+  new Glide('.glide2', {
+    type: 'carousel',
+    startAt: 0,
+    perView: 1,
+    focusAt: 'center',
+  }).mount();
+};
+
+const setupDisplay = (tripType, destinations, htmlTag) => {
+  if (tripType.length > 0) {
+    const tripInfo = tripType.map((item) => {
       return item.reportTripInfo(destinations);
     });
-    renderGlide(pastTrips, tripInfo);
-    new Glide('.glide2', {
-      type: 'carousel',
-      startAt: 0,
-      perView: 1,
-      focusAt: 'center',
-    }).mount();
+    renderGlide(htmlTag, tripInfo);
+  } else {
+    renderPlaceholder('Time to book a new adventure?', htmlTag);
   }
 };
 
@@ -124,7 +104,9 @@ const renderCard = (element, info) => {
     <div class="card">
       <img class="trip-image" src=${info.image} alt=${info.alt}>
       <h3>${info.destination}</h3>
-      <h4>${info.startDate} - ${info.endDate}</h4>
+      <h4>${dayjs(info.startDate).format('MMMM D, YYYY')} - ${dayjs(
+    info.endDate
+  ).format('MMMM D, YYYY')}</h4>
     </div>`;
 };
 
@@ -134,7 +116,9 @@ const renderGlide = (element, trips) => {
     <li class="glide__slide card">
       <img class="trip-image" src=${info.image} alt=${info.alt}>
       <h3>${info.destination}</h3>
-      <h4>${info.startDate} - ${info.endDate}</h4>
+      <h4>${dayjs(info.startDate).format('MMMM D, YYYY')} - ${dayjs(
+      info.endDate
+    ).format('MMMM D, YYYY')}</h4>
     </li>`;
   });
 
@@ -167,8 +151,6 @@ export const renderPage = (
   renderPast(pastTrips, places);
   renderAnnualCost(cost);
 };
-
-//////
 
 export const getEstimate = (event) => {
   event.preventDefault();
