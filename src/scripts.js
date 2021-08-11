@@ -42,8 +42,6 @@ const password = document.getElementById('password');
 const loginBtn = document.getElementById('submit');
 
 //event listener
-// window.addEventListener('load', showLogin);
-
 estimateBtn.addEventListener('click', (event) => {
   getEstimate(event);
 });
