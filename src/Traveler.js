@@ -23,7 +23,7 @@ class Traveler {
     if (!pending) {
       return 'none';
     }
-    return pending;
+    return pending.reverse();
   }
 
   getCurrent(today) {
