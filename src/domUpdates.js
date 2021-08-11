@@ -11,6 +11,10 @@ export const guests = document.getElementById('guests');
 export const destinationSelection = document.getElementById('destinations');
 export const startDate = document.getElementById('startDate');
 export const daysOfTrip = document.getElementById('days');
+const travelDisplay = document.getElementById('travelGrid');
+const loginDisplay = document.getElementById('login');
+const navBar = document.getElementById('navBar');
+const displayCost = document.getElementById('annualCost');
 
 // DOM render functions
 const renderTraveler = (traveler) => {
@@ -132,8 +136,6 @@ const renderGlide = (element, trips) => {
 };
 
 const renderAnnualCost = (cost) => {
-  const displayCost = document.getElementById('annualCost');
-
   displayCost.innerText = `You have spent $${cost} on travel this year.`;
 };
 
@@ -198,4 +200,12 @@ export const displayError = (message) => {
   setTimeout(() => {
     error.innerText = '';
   }, 3000);
+};
+
+export const showLogin = () => {
+  travelDisplay.classList.remove('hidden');
+  estimateForm.classList.remove('hidden');
+  navBar.classList.remove('hidden');
+  displayCost.classList.remove('hidden');
+  loginDisplay.classList.add('hidden');
 };
